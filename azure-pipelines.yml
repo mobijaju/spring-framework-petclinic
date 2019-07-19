@@ -10,7 +10,7 @@ variables:
   serviceConnectionToAzure: app_test_CN
   # the name of your web app here is the same one you used above
   # when you created the web app using the Azure CLI
-  appName: app-test-nam
+  appName: app-test-name
 # ...
 trigger:
 - master
