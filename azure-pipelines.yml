@@ -3,6 +3,16 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
+    # at the top of your YAML file 
+# set some variables that you'll need when you deploy
+variables:
+  # the name of the service connection that you created above
+  serviceConnectionToAzure: name-of-your-service-connection
+  # the name of your web app here is the same one you used above
+  # when you created the web app using the Azure CLI
+  appName: my-app-name
+  
+# ...
 trigger:
 - master
 
@@ -20,18 +30,6 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-
-    # at the top of your YAML file 
-# set some variables that you'll need when you deploy
-variables:
-  # the name of the service connection that you created above
-  serviceConnectionToAzure: name-of-your-service-connection
-  # the name of your web app here is the same one you used above
-  # when you created the web app using the Azure CLI
-  appName: my-app-name
-  
-# ...
-
 # add these as the last steps (below all the other `task` items under `steps`)
 # to deploy to your app service
 - task: CopyFiles@2
